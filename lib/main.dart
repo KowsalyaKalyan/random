@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -30,6 +31,9 @@ class _RandomWidgetState extends StatefulWidget {
 }
 
 class _RandomWidgetStateState extends State<_RandomWidgetState> {
+  var count = 0;
+  var num;
+
   var randomnumber = 0;
   var random = 1;
 
@@ -48,15 +52,52 @@ class _RandomWidgetStateState extends State<_RandomWidgetState> {
   }
 
   func() {
-    // var success = "success";
     if (randomnumber == random) {
+      count++;
+      print(count);
+
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              'success',
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.pinkAccent,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          Icon(
+            Icons.thumb_up,
+            color: Colors.green,
+          ),
+          Text(
+            'count :$count',
+            style: TextStyle(color: Colors.black, fontSize: 18),
+          ),
+        ],
+      );
+    } else if (randomnumber != random) {
       return Center(
-        child: Text(
-          'success',
-          style: TextStyle(
-              fontSize: 30,
-              color: Colors.pinkAccent,
-              fontWeight: FontWeight.bold),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Pls try again later',
+              style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.pinkAccent,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Icon(
+              Icons.thumb_down,
+              color: Colors.red,
+            )
+          ],
         ),
       );
     }
@@ -73,6 +114,7 @@ class _RandomWidgetStateState extends State<_RandomWidgetState> {
         backgroundColor: Colors.pinkAccent[400],
       ),
       body: Card(
+        color: Colors.grey[200],
         child: Column(
           children: [
             Container(
@@ -95,7 +137,11 @@ class _RandomWidgetStateState extends State<_RandomWidgetState> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
-                        child: Text('$randomnumber'),
+                        child: Text(
+                          '$randomnumber',
+                          style: TextStyle(
+                              color: Colors.pinkAccent[700], fontSize: 20),
+                        ),
                       ),
                       Container(
                         padding: EdgeInsets.only(
@@ -125,7 +171,11 @@ class _RandomWidgetStateState extends State<_RandomWidgetState> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Center(
-                        child: Text('$random'),
+                        child: Text(
+                          '$random',
+                          style: TextStyle(
+                              color: Colors.pinkAccent[700], fontSize: 20),
+                        ),
                       ),
                     ],
                   ),
